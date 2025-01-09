@@ -29,7 +29,7 @@ def predict(df, dv, model, categorical, numerical):
 
     return y_pred
 
-def run(model_output_path) : 
+def run(model_output_path='') : 
     # Dataframe definition
     df = pd.read_csv('../data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv')
     
@@ -70,14 +70,18 @@ def run(model_output_path) :
     # Training and prediction of model
     C=1.0
     dv, model = train(df_full_train, df_full_train.churn.values, categorical, numerical, C)
+    
+    # Logging the AUC with test data for diagnostic purposes
+    """
     y_pred = predict(df_test, dv, model, categorical, numerical)
-
     y_test = df_test.churn.values
     auc = roc_auc_score(y_test, y_pred)
-    auc
+    print(auc)
+    """
 
     # Save the model
-    output_file = f'model_C={C}.bin'
+    filename_def = f'model_C={C}.bin'
+    output_file = model_output_path+filename_def
 
     f_out = open(output_file, 'wb') 
     pickle.dump((dv, model), f_out)
@@ -86,6 +90,8 @@ def run(model_output_path) :
     with open(output_file, 'wb') as f_out: 
         pickle.dump((dv, model), f_out)
 
+    # Loading the model and using it for a prediction, will leave for deployment exercises 
+    """
     # Load the model
     input_file = 'model_C=1.0.bin'
 
@@ -151,3 +157,6 @@ def run(model_output_path) :
 
     if response['churn']:
         print('sending email to', 'asdx-123d')
+    """
+
+run()
