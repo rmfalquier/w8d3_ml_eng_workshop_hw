@@ -4,11 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+click = "*"
+numpy = "==1.26.4"
+scikit-learn = "==1.2.2"
 pandas = "*"
 pyarrow = "*"
-numpy = "==1.26.4"
-scikit-learn = "==1.0.2"
-click = "*"
+flask = "*"
+requests = "*"
 
 [dev-packages]
 seaborn = "*"
