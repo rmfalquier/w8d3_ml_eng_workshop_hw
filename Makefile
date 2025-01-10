@@ -11,3 +11,11 @@ run:
 .PHONY: integration_test
 integration_test:
 	pipenv run python tests/predict_test.py
+
+.PHONY:	docker_build
+docker_build:
+	docker build -t predictions .
+
+.PHONY: docker_run
+docker_run: docker_build
+	docker run -it predicions
