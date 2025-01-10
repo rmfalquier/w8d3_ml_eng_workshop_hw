@@ -11,6 +11,7 @@ pandas = "*"
 pyarrow = "*"
 flask = "*"
 requests = "*"
+gunicorn = "*"
 
 [dev-packages]
 seaborn = "*"

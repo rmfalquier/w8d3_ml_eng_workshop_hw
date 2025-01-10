@@ -18,4 +18,4 @@ docker_build:
 
 .PHONY: docker_run
 docker_run: docker_build
-	docker run -it predicions
+	docker run -it -p 127.0.0.1:9696:9696 predictions:latest
